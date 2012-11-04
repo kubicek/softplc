@@ -5,11 +5,11 @@ require "softplc/version"
 Gem::Specification.new do |s|
   s.name        = "softplc"
   s.version     = Softplc::VERSION
-  s.authors     = ["Jiří Kubíček"]
+  s.authors     = ["Jiri Kubicek"]
   s.email       = ["jiri.kubicek@kraxnet.cz"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Ruby library for retrieving values from SoftPLC}
+  s.description = %q{This gem uses webservice on Domat's MiniPLC to retrieve variables values'}
 
   s.rubyforge_project = "softplc"
 
@@ -18,7 +18,13 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "shoulda"
+  s.add_development_dependency "mocha"
+  s.add_development_dependency "fakeweb"
+  s.add_development_dependency "turn"
+  s.add_development_dependency "minitest"
+
+  s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "nokogiri"
 end
