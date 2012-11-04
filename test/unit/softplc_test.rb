@@ -19,11 +19,16 @@ module Softplc
         assert_equal Softplc.configuration.host, '192.168.1.160'
       end
 
-      should "set and retrieve value" do
+      should "set value directly" do
+        Softplc.configuration.host = '127.0.0.2'
+        assert_equal Softplc.configuration.host, '127.0.0.2'
+      end
+
+      should "set value in a block" do
         Softplc.configure do |config|
-          config.host = '127.0.0.1'
+          config.host = '127.0.0.3'
         end
-        assert_equal Softplc.configuration.host, '127.0.0.1'
+        assert_equal Softplc.configuration.host, '127.0.0.3'
       end
 
     end
