@@ -1,6 +1,6 @@
 require "pathname"
-
-Dir.glob("lib/softplc/**/*.rb").each { |file| require file }
+require "softplc/fetcher"
+require "softplc/version"
 
 module Softplc
 

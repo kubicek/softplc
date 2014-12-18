@@ -1,11 +1,16 @@
 require 'test_helper'
 
 module Softplc
-  class FetcherTest < Test::Unit::TestCase
+  class FetcherTest < Minitest::Test
 
         context "Fetcher" do
 
           setup do
+
+            Softplc.configure do |config|
+              config.host = '127.0.0.2'
+            end
+
             uuids = [
               "46261352-25c4-4287-975a-1f01aceb6cca",
               "d864af63-fb44-459a-86d6-8f9024a0ed17",
@@ -21,7 +26,7 @@ module Softplc
           should "compose xml request" do
             assert_equal File.read(Softplc.root.join('test/fixtures/values_request.xml')), @fetcher.to_request
           end
-          
+
           should "retrieve values from softplc" do
             assert_equal File.read(Softplc.root.join('test/fixtures/values_response.xml')), @fetcher.response
           end

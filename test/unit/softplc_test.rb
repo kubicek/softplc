@@ -1,16 +1,14 @@
 require 'test_helper'
 
 module Softplc
-  class SoftplcTest < Test::Unit::TestCase
+  class SoftplcTest < Minitest::Test
 
     context "Configuration" do
 
       should "should be allowed to be set" do
-        assert_nothing_raised { 
-          Softplc.configure do |config|
-            config.host = '127.0.0.1'
-          end
-        }
+        Softplc.configure do |config|
+          config.host = '127.0.0.1'
+        end
       end
 
       should "have default host value" do
