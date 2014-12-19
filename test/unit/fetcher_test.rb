@@ -19,20 +19,8 @@ module Softplc
             @fetcher = Softplc::Fetcher.new(uuids)
           end
 
-          # should "be initialized with a name" do
-          #   assert_nothing_raised { Application.new('test') }
-          # end
-
-          should "compose xml request" do
-            assert_equal File.read(Softplc.root.join('test/fixtures/values_request.xml')), @fetcher.to_request
-          end
-
-          should "retrieve values from softplc" do
-            assert_equal File.read(Softplc.root.join('test/fixtures/values_response.xml')), @fetcher.response
-          end
-
           should "parse correct values" do
-            assert_equal ["43.792884", "20.822692", "30.679062"], @fetcher.values
+            assert_equal "43.792884", @fetcher.sensors.detect{|sensor| sensor.uuid=="46261352-25c4-4287-975a-1f01aceb6cca"}.value
           end
 
         end
