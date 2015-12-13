@@ -5,7 +5,9 @@ This gem uses webservice on Domat's MiniPLC to retrieve variables values from So
 
 Usage:
 
-    Softplc.configuration.host = '192.168.1.160'
+    Softplc.configure { |c| 
+        c.host='192.168.1.160'
+    }
 
     uuids = [
       "46261352-25c4-4287-975a-1f01aceb6cca",
