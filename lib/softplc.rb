@@ -21,7 +21,7 @@ module Softplc
   end
 
   class Configuration
-    attr_accessor :host
+    attr_accessor :user, :pass, :host
 
     def initialize
       @host = '192.168.1.160'

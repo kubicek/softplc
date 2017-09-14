@@ -23,7 +23,7 @@ module Softplc
 
     def prefetch
       while sensors.detect{|sensor| sensor.value.nil?}
-        response = RestClient.post "http://#{Softplc.configuration.host}/splchmi.ashx", to_request, {:content_type => :xml}
+        response = RestClient.post "http://#{Softplc.configuration.user}:#{Softplc.configuration.pass}@#{Softplc.configuration.host}/splchmi.ashx", to_request, {:content_type => :xml}
         doc = Nokogiri.XML(response.body)
         doc.xpath("//xmlns:v[@esgid:vId]").each{|xml|
           uuid = xml.attributes["vId"].value.match(/svc:.*\/(.*)/)[1]
